@@ -15,23 +15,31 @@ export default new Router({
       component: Home
     },
     { path: '/login', name: 'login', component: () => import('./components/auth/signin.vue') },
-    {
-      path: '/signup', name: 'signup', component: () => import('./components/auth/signup.vue'),},
+    { path: '/signup', name: 'signup', component: () => import('./components/auth/signup.vue'),},
     { path: '/dashboard', 
       name: 'dashboard', 
       component: () => import('./components/dashboard/dashboard.vue'),
-      beforeEnter(to, from, next) {
-        if (store.state.token) {
-          next()
-        } else {
-          next('/login')
-        }
-      } 
+
     },
     {
       path: '/welcome',
       name: 'welcome',
       component: () => import('./components/welcome/welcome.vue'),
+    },
+    {
+      path:'/posts',
+      name:'posts',
+      component: () => import('./views/posts/List.vue'),
+    },
+    {
+      path:'/posts/:id',
+      name:'onePost',
+      component: () => import('./views/posts/ShowOne.vue'),
+    },
+    {
+      path:'/create',
+      name:'create',
+      component : () => import('./views/posts/Create.vue'),
     },
     {
       path: '/about',

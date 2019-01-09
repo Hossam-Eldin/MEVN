@@ -15,6 +15,12 @@
           <router-link to="/dashboard">Dashboard</router-link>
         </li>
         <li v-if="auth">
+          <router-link to="/posts">Posts</router-link>
+        </li>
+        <li v-if="auth">
+          <router-link to="/create">Create</router-link>
+        </li>
+        <li v-if="auth">
           <button class="btn" @click="onLogout">Logout</button>
         </li>
       </ul>
