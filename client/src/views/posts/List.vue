@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    {{posts}}
     <table class="table table-striped table-dark">
       <thead>
         <tr>
@@ -11,13 +11,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+
+        <tr v-for="(post, index) in posts" :key="index">
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>{{post.titel}}</td>
+          <td>{{post.text}}</td>
           <td>   
-             <button class="btn btn-info" type="button" @click="edit(15)">Edit</button>
-            <button class="btn btn-dnager" type="button" @click="onDelete(15)">Delete</button>   
+             <button class="btn btn-info " type="button" @click="edit(15)">Edit</button>
+            <button class="btn btn-danger " type="button" @click="onDelete(15)">Delete</button>   
           </td>
         </tr>
       </tbody>
@@ -52,7 +53,7 @@ export default {
         .get("http://localhost:3000/posts/")
         .then(res => {
           console.log(res);
-          this.posts = res.data;
+          this.posts = res.data.data;
         })
         .catch(err => {
           console.log(err);

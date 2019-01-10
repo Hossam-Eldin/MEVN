@@ -41,7 +41,7 @@ import axios from 'axios'
         methods: {
             onChange(event) {
                 this.image  = event.image.files[0];
-                console.log(this.image);
+               // console.log(this.image);
             },
             onSubmit() {
                   
@@ -50,14 +50,11 @@ import axios from 'axios'
                 formData.append('title', this.title);
                 formData.append('text', this.text);
 
+                axios.post('http://localhost:3000/posts/create', formData)
+                .then(res => { console.log(res)})
+                .catch(err => {console.log(err)})
 
-                 axios.post('http://localhost:3000/posts/create', formData)
-                .then(res  =>  {
-                    console.log(res)
-                })
-                .catch(err => {
-                    console.log(err)
-                })                  
+
             }
         },
     }
